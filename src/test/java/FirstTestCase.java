@@ -50,12 +50,16 @@ public class FirstTestCase {
         driver.findElement(By.tagName("textarea")).sendKeys(product);
         driver.findElement(By.tagName("textarea")).submit();
 
+        iterar("a", "Amazon");
+    }
+
+    void iterar(String elementoBuscar, String texto) {
         //Creo una lista con todos los links
-        List<WebElement> links = driver.findElements(By.tagName("a"));
+        List<WebElement> links = driver.findElements(By.tagName(elementoBuscar));
         //Compruebo los links hasta dar con uno que contenga la "Amazon" y accedo a él
         for (int i = 0; i < links.size(); i++) {
             String text = links.get(i).getText();
-            if (text.contains("Amazon")) {
+            if (text.contains(texto)) {
                 links.get(i).click();
                 break;
             }
@@ -64,16 +68,7 @@ public class FirstTestCase {
 
     void generalPage() {
         System.out.println("General page");
-        List<WebElement> links = driver.findElements(By.tagName("a"));
-
-        for (int i = 0; i < links.size(); i++) {
-            String text = links.get(i).getText();
-            if (text.contains("compresor") || text.contains("Compresor")) {
-                System.out.println("Link found");
-                links.get(i).click();
-                break;
-            }
-        }
+        iterar("a", "Compresor");
     }
 
     void handleAmazonProduct() {
