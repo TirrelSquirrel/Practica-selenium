@@ -89,12 +89,15 @@ public class FirstTestCase {
         cookies("a-autoid-0");
         cookies("sp-cc-accept");
 
-
         // Compruebo en que página de amazon estoy
         if(title.contains("Compresores")) {
             generalPage();
         }
 
+        searchDeliveryandPrice();
+    }
+
+    private void searchDeliveryandPrice() {
         //Declaro las variables para el precio
         String priceWhole = driver.findElement(By.className("a-price-whole")).getText();
         String priceFraction = driver.findElement(By.className("a-price-fraction")).getText();
