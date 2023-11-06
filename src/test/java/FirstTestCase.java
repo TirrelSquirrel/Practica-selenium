@@ -30,6 +30,7 @@ public class FirstTestCase {
         handleAmazonProduct();
         amazonSearch();
         filter("Precio: De menor a mayor");
+        takeData();
     }
 
     //Funcion para trabajar en google
@@ -139,8 +140,12 @@ public class FirstTestCase {
     
     void takeData() {
         List<WebElement> elements;
-        elements = driver.findElements(By.className("a-section a-spacing-none puis-padding-right-small s-title-instructions-style"));
+        elements = driver.findElements(By.className("s-title-instructions-style"));
+        for (int i = 0; i < elements.size(); i++) {
+            System.out.println(elements.get(i).getText());
+        }
         List<String> titles;
+        System.out.printf("");
     }
 
     //Una vez finalizados todos los tests cierro el navegador
