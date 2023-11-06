@@ -71,25 +71,23 @@ public class FirstTestCase {
         iterar("a", "Compresor");
     }
 
+    void cookies(String id) {
+        try{
+            System.out.println("Buscando cookies");
+            driver.findElement(By.id(id)).click();
+        } catch (Exception e) {
+            System.out.println("Modal de cookies no encontrado");
+            System.out.println(e);
+        }
+    }
+
     void handleAmazonProduct() {
         String title = driver.getTitle();
         System.out.println(title);
-
         //Acepto las cookies
-        try{
-            System.out.println("Buscando cookies");
-            driver.findElement(By.id("a-autoid-0")).click();
-        } catch (Exception e) {
-            System.out.println("Modal de cookies no encontrado");
-            System.out.println(e);
-        }
-        try{
-            System.out.println("Buscando cookies");
-            driver.findElement(By.id("sp-cc-accept")).click();
-        } catch (Exception e) {
-            System.out.println("Modal de cookies no encontrado");
-            System.out.println(e);
-        }
+
+        cookies("a-autoid-0");
+        cookies("sp-cc-accept");
 
 
         // Compruebo en que página de amazon estoy
