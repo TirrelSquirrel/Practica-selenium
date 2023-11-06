@@ -83,6 +83,14 @@ public class FirstTestCase {
             System.out.println("Modal de cookies no encontrado");
             System.out.println(e);
         }
+        try{
+            System.out.println("Buscando cookies");
+            driver.findElement(By.id("sp-cc-accept")).click();
+        } catch (Exception e) {
+            System.out.println("Modal de cookies no encontrado");
+            System.out.println(e);
+        }
+
 
         // Compruebo en que página de amazon estoy
         if(title.contains("Compresores")) {
