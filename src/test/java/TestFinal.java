@@ -12,6 +12,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 public class TestFinal {
@@ -47,6 +48,9 @@ public class TestFinal {
         base.searchLinkAndClickOne("Amazon");
         amazonGeneral = new AmazonGeneral(driver);
         amazonGeneral.acceptCookies();
+        if (amazonGeneral.identifyScreen()) {
+            System.out.println("Encontrado panel de identificacion");
+            amazonGeneral.inputSearch(producto);}
         if(amazonGeneral.isOnMain("Compresores")) {base.searchLinkAndClickOne("Compresor");}
         amazonProductPage = new AmazonProductPage(driver);
         System.out.println(amazonProductPage.getDeliveryDate());
@@ -54,11 +58,14 @@ public class TestFinal {
         amazonGeneral.inputSearch(producto);
         amazonSearchResultsPage = new AmazonSearchResultsPage(driver);
         amazonSearchResultsPage.filterDropdownSelect("Precio: De menor a mayor", lowToHighPriceDropdown);
+        amazonSearchResultsPage.filterByPrime();
+        System.out.print(amazonSearchResultsPage.getProductsAndPrices());
+        System.out.println("Test finalizado con exito");
     }
 
     @AfterClass
     public void teardown() {
-        System.out.println("Test finalizado con exito, cerrando navegador");
+        System.out.println("Test finalizado, cerrando navegador");
         base.tearDown();
     }
 }
