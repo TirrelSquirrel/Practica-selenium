@@ -9,6 +9,7 @@ public class AmazonGeneral extends Base {
     By searchBar = By.id("twotabsearchtextbox");
     By cookies1 = By.id("a-autoid-0");
     By cookies2 = By.id("sp-cc-accept");
+    By signinCard = By.id("rhf-container");
     public AmazonGeneral(WebDriver driver) {
         super(driver);
     }
@@ -25,12 +26,14 @@ public class AmazonGeneral extends Base {
         try{
             System.out.println("Buscando cookies Amazon " + cookies1);
             super.click(super.findElement(cookies1));
+            return;
         } catch (Exception e) {
             System.out.println("Localizador de cookies no encontrado");
         }
         try{
             System.out.println("Buscando cookies Amazon " + cookies2);
             super.click(super.findElement(cookies2));
+            return;
         } catch (Exception e) {
             System.out.println("Localizador de cookies no encontrado");
         }
@@ -39,5 +42,15 @@ public class AmazonGeneral extends Base {
     public void inputSearch(String inputText) {
         super.type(inputText, searchBar);
         super.submit(searchBar);
+    }
+
+    public Boolean identifyScreen() {
+        try{
+            System.out.println("Comprobando si aparece panel de identificacion");
+            return super.isDisplayed(signinCard);
+        } catch (Exception e) {
+            System.out.println("No he encontrado el elemento " + signinCard);
+            return false;
+        }
     }
 }

@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.AbstractList;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Base {
@@ -40,6 +42,18 @@ public class Base {
         return driver.findElement(locator).getText();
     }
 
+    public String getElementText(WebElement element) {
+        return element.getText();
+    }
+
+    public List<String> getElementsText(List<WebElement> elementList) {
+        List<String> textList = new ArrayList<String>();
+        for (int i = 0; i < elementList.size(); i++){
+            textList.add(elementList.get(i).getText());
+        }
+        return textList;
+    }
+
     public void type(String inputText, By locator) {
         driver.findElement(locator).sendKeys(inputText);
     }
@@ -67,18 +81,14 @@ public class Base {
             WebElement link = Utils.findInList(linkText, linkList);
             click(link);
         } catch (Exception e) {
-            System.out.println("Texto no encontrado en lista de elementos");
+            System.out.println("Texto no encontrado en lista de elementos " + linkText);
             throw e;
         }
     }
 
-    /*public Boolean isDisplayed(By locator){
-        try {
-            return driver.findElement(locator);
-        } catch (org.openqa.selenium.NoSuchElementException e) {
-            return false;
-        }
-    }*/
+    public Boolean isDisplayed(By locator){
+        return driver.findElement(locator).isDisplayed();
+    }
 
     public void visit(String url) {
         driver.get(url);
