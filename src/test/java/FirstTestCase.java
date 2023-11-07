@@ -3,7 +3,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
-import org.testng.annotations.*;
 
 import java.sql.Driver;
 import java.util.List;
@@ -16,8 +15,9 @@ public class FirstTestCase {
     //Declaro la variable para el nombre de producto
     public String product = "Compresor eléctrico";
 
+
     //Antes de cualquier test inicializo el webdriver
-    @BeforeTest
+    /*@BeforeTest
     void setup() {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
@@ -26,15 +26,17 @@ public class FirstTestCase {
     //Test en el que llamo a las funciones necesarias
     @Test
     void mainTest() {
+*//*
         handleGoogle();
-        handleAmazonProduct();
-        amazonSearch();
-        filter("Precio: De menor a mayor");
+*//*
+        *//*handleAmazonProduct();*//*
+        *//*amazonSearch();*//*
+        *//*filter("Precio: De menor a mayor");*//*
         takeData();
     }
 
     //Funcion para trabajar en google
-    void handleGoogle() {
+    *//*void handleGoogle() {
         //Accedo a la url
         driver.get("https://www.google.com");
         System.out.println(driver.getTitle());
@@ -51,9 +53,9 @@ public class FirstTestCase {
         driver.findElement(By.tagName("textarea")).submit();
 
         iterar("a", "Amazon");
-    }
+    }*//*
 
-    void iterar(String elementoBuscar, String texto) {
+    *//*void iterar(String elementoBuscar, String texto) {
         //Creo una lista con todos los links
         List<WebElement> links = driver.findElements(By.tagName(elementoBuscar));
         //Compruebo los links hasta dar con uno que contenga la "Amazon" y accedo a él
@@ -64,14 +66,16 @@ public class FirstTestCase {
                 break;
             }
         }
-    }
+    }*//*
 
-    void generalPage() {
+    *//*void generalPage() {
         System.out.println("General page");
+*//**//*
         iterar("a", "Compresor");
-    }
+*//**//*
+    }*//*
 
-    void cookies(String id) {
+*//*    void cookies(String id) {
         try{
             System.out.println("Buscando cookies");
             driver.findElement(By.id(id)).click();
@@ -79,25 +83,25 @@ public class FirstTestCase {
             System.out.println("Modal de cookies no encontrado");
             System.out.println(e);
         }
-    }
+    }*//*
 
-    void handleAmazonProduct() {
+*//*    void handleAmazonProduct() {
         String title = driver.getTitle();
         System.out.println(title);
         //Acepto las cookies
 
-        cookies("a-autoid-0");
+*//**//*        cookies("a-autoid-0");
         cookies("sp-cc-accept");
 
         // Compruebo en que página de amazon estoy
         if(title.contains("Compresores")) {
             generalPage();
-        }
+        }*//**//*
 
         searchDeliveryandPrice();
-    }
+    }*//*
 
-    private void searchDeliveryandPrice() {
+*//*    private void searchDeliveryandPrice() {
         //Declaro las variables para el precio
         String priceWhole = driver.findElement(By.className("a-price-whole")).getText();
         String priceFraction = driver.findElement(By.className("a-price-fraction")).getText();
@@ -116,15 +120,15 @@ public class FirstTestCase {
                 break;
             }
         }
-    }
+    }*//*
 
-    void amazonSearch() {
+*//*    void amazonSearch() {
         driver.findElement(By.id("twotabsearchtextbox")).sendKeys(product);
         driver.findElement(By.id("twotabsearchtextbox")).submit();
-    }
+    }*//*
 
-    void filter(String dropdownSelect) {
-        /*List<WebElement> links = driver.findElements(By.tagName("span"));
+*//*    void filter(String dropdownSelect) {
+        *//**//*List<WebElement> links = driver.findElements(By.tagName("span"));
 
         System.out.println("Buscando enlace");
         for (int i = 0; i < links.size(); i++) {
@@ -134,13 +138,13 @@ public class FirstTestCase {
                 links.get(i).click();
                 break;
             }
-        }*/
+        }*//**//*
 
         //Selecciono el dropdown y elijo el objetivo
         Select dropdown = new Select(driver.findElement(By.name("s")));
         dropdown.selectByVisibleText(dropdownSelect);
         driver.findElement(By.id("s-result-sort-select_1")).click();
-    }
+    }*//*
     
     void takeData() {
         List<WebElement> elements;
@@ -156,5 +160,5 @@ public class FirstTestCase {
     @AfterTest
     void tearDown() {
         driver.quit();
-    }
+    }*/
 }
