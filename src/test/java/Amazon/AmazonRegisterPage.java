@@ -2,6 +2,7 @@ package Amazon;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AmazonRegisterPage extends AmazonGeneral{
     By userName = By.id("ap_customer_name");
@@ -32,10 +33,8 @@ public class AmazonRegisterPage extends AmazonGeneral{
     }
 
     public void startCaptcha() {
-        super.switchToFrame(frameID);
-        //super.click(super.findElement(button));
-        /*super.click(startCaptchaButton);*/
-        //super.click(startCaptchaButton);
-        //super.click(super.findElement(startCaptchaText, super.findElements(buttons)));
+        super.waitUntilElementIsVisible(button);
+        super.switchToIFrame(0);
+        super.click(button);
     }
 }
