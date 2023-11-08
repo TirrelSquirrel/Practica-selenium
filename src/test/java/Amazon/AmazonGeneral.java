@@ -10,6 +10,12 @@ public class AmazonGeneral extends Base {
     By cookies1 = By.id("a-autoid-0");
     By cookies2 = By.id("sp-cc-accept");
     By signinCard = By.id("rhf-container");
+    By navAccount = By.id("nav-link-accountList");
+    By myAccount = By.xpath("//a[@href='/gp/css/homepage.html/ref=nav_bb_ya']");
+
+
+    String miCuenta = "Mi cuenta";
+    By spans = By.tagName("span");
     public AmazonGeneral(WebDriver driver) {
         super(driver);
     }
@@ -51,6 +57,17 @@ public class AmazonGeneral extends Base {
         } catch (Exception e) {
             System.out.println("No he encontrado el elemento " + signinCard);
             return false;
+        }
+    }
+
+    public void clickAccount() {
+        if(super.isDisplayed(navAccount)) {
+            super.click(navAccount);
+        } else {
+            //No logro que lo encuentre
+            /*super.click(myAccount);*/
+            super.click(super.findElement(miCuenta, super.findElements(spans)));
+
         }
     }
 }

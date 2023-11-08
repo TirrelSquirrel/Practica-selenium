@@ -29,6 +29,9 @@ public class Base {
     public WebElement findElement(By locator){
         return driver.findElement(locator);
     }
+    public WebElement findElement(String text, List<WebElement> elementList) {
+        return Utils.findInList(text, elementList);
+    }
 
     public List<WebElement> findElements(By locator){
         return driver.findElements(locator);
