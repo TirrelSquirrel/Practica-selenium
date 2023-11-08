@@ -29,6 +29,9 @@ public class Base {
     public WebElement findElement(By locator){
         return driver.findElement(locator);
     }
+    public WebElement findElement(String text, List<WebElement> elementList) {
+        return Utils.findInList(text, elementList);
+    }
 
     public List<WebElement> findElements(By locator){
         return driver.findElements(locator);
@@ -84,6 +87,10 @@ public class Base {
             System.out.println("Texto no encontrado en lista de elementos " + linkText);
             throw e;
         }
+    }
+
+    public void switchToFrame(By locator) {
+        driver.switchTo().frame(findElement(locator));
     }
 
     public Boolean isDisplayed(By locator){

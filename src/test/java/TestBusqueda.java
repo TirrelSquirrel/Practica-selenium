@@ -5,17 +5,16 @@ import Google.GoogleGeneral;
 import Google.GoogleHomePage;
 import Google.GoogleSearchPage;
 import Project.Base;
-import Utils.Utils;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
 
-import java.util.Arrays;
+import org.testng.annotations.*;
+
 import java.util.concurrent.TimeUnit;
 
-public class TestFinal {
+
+public class TestBusqueda {
     Base base;
     GoogleGeneral googleGeneral;
     GoogleSearchPage googleSearchPage;
@@ -30,17 +29,21 @@ public class TestFinal {
 
     String producto = "Compresor eléctrico";
 
-
     @BeforeClass
     public void setup() {
-
         base = new Base(driver);
         driver = base.chromeDriverConnection();
-        driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         base.visit("https://www.google.com");
     }
+    @AfterClass
+    public void teardown() {
+        System.out.println("Test finalizado, cerrando navegador");
+        base.tearDown();
+    }
+
     @Test
-    public void testName() {
+    public void testBusqueda() {
         googleGeneral = new GoogleGeneral(driver);
         googleGeneral.googleModalAccept();
         googleHomePage = new GoogleHomePage(driver);
@@ -63,9 +66,5 @@ public class TestFinal {
         System.out.println("Test finalizado con exito");
     }
 
-    @AfterClass
-    public void teardown() {
-        System.out.println("Test finalizado, cerrando navegador");
-        base.tearDown();
-    }
+
 }
