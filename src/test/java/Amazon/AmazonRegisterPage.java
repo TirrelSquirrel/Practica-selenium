@@ -9,6 +9,8 @@ public class AmazonRegisterPage extends AmazonGeneral{
     By userPass = By.id("ap_password");
     By userPassCheck = By.id("ap_password_check");
     By confirmEmail = By.id("auth-continue");
+    By iframe = By.id("game-core-frame");
+    String frameID = "game-core-frame";
     By button = By.tagName("button");
     String startCaptchaText = "Comenzar rompecabezas";
     //By startCaptchaButton = By.xpath(".//span[@class='sc-nkuzb1-0 sc-d5trka-0 eZxMRy button']");
@@ -30,7 +32,8 @@ public class AmazonRegisterPage extends AmazonGeneral{
     }
 
     public void startCaptcha() {
-        super.switchToFrame(button);
+        super.switchToFrame(frameID);
+        //super.click(super.findElement(button));
         /*super.click(startCaptchaButton);*/
         //super.click(startCaptchaButton);
         //super.click(super.findElement(startCaptchaText, super.findElements(buttons)));

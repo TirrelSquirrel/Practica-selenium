@@ -89,8 +89,9 @@ public class Base {
         }
     }
 
-    public void switchToFrame(By locator) {
-        driver.switchTo().frame(findElement(locator));
+    public void switchToFrame(String id) {
+        driver.switchTo().frame(id);
+        click(By.tagName("button"));
     }
 
     public Boolean isDisplayed(By locator){
