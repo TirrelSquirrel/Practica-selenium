@@ -11,7 +11,7 @@ public class AmazonGeneral extends Base {
     By cookies2 = By.id("sp-cc-accept");
     By signinCard = By.id("rhf-container");
     By navAccount = By.id("nav-link-accountList");
-    By myAccount = By.xpath("//a[@href^='/gp/css/homepage.html/ref=nav_bb_ya']");
+    By myAccount = By.xpath("//a[@href='/gp/css/homepage.html/ref=nav_bb_ya']");
 
     By accountXpath = By.xpath("/html/body/div[1]/div/div[1]/button");
     String miCuenta = "Mi cuenta";
@@ -64,10 +64,13 @@ public class AmazonGeneral extends Base {
         if(super.isDisplayed(navAccount)) {
             super.click(navAccount);
         } else {
-            //No logro que lo encuentre
-            //super.click(accountXpath);
+
+            //Lo encuentra pero no le da click
+            //No creo que haya otro elemento con el mismo href no?
+            if (super.isDisplayed(myAccount)) {
+                System.out.println("He encontrado " + myAccount);
+            }
             super.click(myAccount);
-            //super.click(super.findElement(miCuenta, super.findElements(spans)));
 
         }
     }
