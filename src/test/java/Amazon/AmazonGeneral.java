@@ -64,7 +64,6 @@ public class AmazonGeneral extends Base {
         if(super.isDisplayed(navAccount)) {
             super.click(navAccount);
         } else {
-
             //Lo encuentra pero no le da click
             //No creo que haya otro elemento con el mismo href no?
             if (super.isDisplayed(myAccount)) {

@@ -42,7 +42,7 @@ public class TestRegistro {
         amazonRegisterPage = new AmazonRegisterPage(driver);
         amazonRegisterPage.fillOutForm(name, email, password);
         amazonRegisterPage.confirmEmailButton();
-        //No encuentra el boton por el xpath
+        //No encuentra el boton
         amazonRegisterPage.startCaptcha();
     }
 }

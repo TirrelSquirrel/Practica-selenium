@@ -34,6 +34,7 @@ public class AmazonRegisterPage extends AmazonGeneral{
 
     public void startCaptcha() {
         super.switchToIFrame(0);
+        //Aqui no encuentra el boton
         System.out.println(super.isDisplayed(button));
         super.click(button);
     }
