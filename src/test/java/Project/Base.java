@@ -94,7 +94,7 @@ public class Base {
     }
 
     public void switchToIFrame(int index) {
-        waitUntilElementIsVisible(By.tagName("iframe"));
+        waitUntilElementIsVisible(By.tagName("iframe"), 60);
         driver.switchTo().frame(index);
     }
 
@@ -102,13 +102,19 @@ public class Base {
         driver.switchTo().defaultContent();
     }
 
-    public void waitUntilElementIsVisible(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    public void waitUntilElementIsVisible(By locator, int waitTime) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitTime));
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
     public Boolean isDisplayed(By locator){
-        return driver.findElement(locator).isDisplayed();
+        try {
+            driver.findElement(locator).isDisplayed();
+            return true;
+        } catch (Exception e) {
+            System.out.println("Element not found" + locator);
+            return false;
+        }
     }
 
     public void visit(String url) {

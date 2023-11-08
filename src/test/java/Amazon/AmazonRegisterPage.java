@@ -33,8 +33,8 @@ public class AmazonRegisterPage extends AmazonGeneral{
     }
 
     public void startCaptcha() {
-        super.waitUntilElementIsVisible(button);
         super.switchToIFrame(0);
+        System.out.println(super.isDisplayed(button));
         super.click(button);
     }
 }
